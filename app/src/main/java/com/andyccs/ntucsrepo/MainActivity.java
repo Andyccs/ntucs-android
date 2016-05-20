@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements
   }
 
   @Override
-  public void onResourceSelectedListener(int id) {
+  public void onResourceSelected(int id) {
     System.out.println("hello world: "+ id);
   }
 }

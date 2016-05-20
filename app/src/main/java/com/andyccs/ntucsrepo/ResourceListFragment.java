@@ -3,12 +3,18 @@ package com.andyccs.ntucsrepo;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 
 
 public class ResourceListFragment extends Fragment {
+  private static final String TAG = ResourceListFragment.class.getName();
   private static final String RESOURCE_TYPE_PARAM = "resource_type";
 
   private String resourceType;
@@ -47,14 +53,35 @@ public class ResourceListFragment extends Fragment {
       throw new NullPointerException(
           "You must provide resource type param to ResourceListFragment");
     }
-    System.out.println("resource type: " + resourceType);
+
+    // TODO: need to get data by using resourceType filter
+    Log.d(TAG, "resource type: " + resourceType);
   }
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
-    // Inflate the layout for this fragment
-    return inflater.inflate(R.layout.fragment_resource_list, container, false);
+    View view = inflater.inflate(R.layout.fragment_resource_list, container, false);
+
+    TextView resourceListTitle = (TextView) view.findViewById(R.id.resource_list_title);
+    resourceListTitle.setText(ResourceType.getName(resourceType));
+
+    ListView resourceList = (ListView) view.findViewById(R.id.resource_list);
+    ArrayAdapter<ResourceModel> resourceListAdapter = new ArrayAdapter<>(
+        getActivity(),
+        R.layout.resource_text,
+        R.id.resource_text_1,
+        MockResourceModels.getMocks());
+    resourceList.setAdapter(resourceListAdapter);
+    resourceList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+      @Override
+      public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        ResourceModel resource = (ResourceModel) adapterView.getAdapter().getItem(i);
+        onResourceSelectedListener.onResourceSelected(resource.getId());
+      }
+    });
+
+    return view;
   }
 
   @Override
@@ -75,6 +102,6 @@ public class ResourceListFragment extends Fragment {
   }
 
   public interface OnResourceSelectedListener {
-    void onResourceSelectedListener(int id);
+    void onResourceSelected(int id);
   }
 }

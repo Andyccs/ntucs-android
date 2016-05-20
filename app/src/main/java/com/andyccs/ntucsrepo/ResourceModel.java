@@ -1,6 +1,6 @@
 package com.andyccs.ntucsrepo;
 
-public class ResourceModels {
+public class ResourceModel {
   private int id;
   private String name;
   private String pdfLink;
@@ -45,5 +45,10 @@ public class ResourceModels {
 
   public void setType(String type) {
     this.type = type;
+  }
+
+  @Override
+  public String toString() {
+    return getName();
   }
 }

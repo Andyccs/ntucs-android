@@ -41,9 +41,9 @@ public class MainFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
     View mainView = inflater.inflate(R.layout.fragment_main, container, false);
-    resourceList = (ListView) mainView.findViewById(R.id.resource_list);
+    resourceList = (ListView) mainView.findViewById(R.id.resource_type_list);
 
-    ArrayAdapter<String> resourceListAdapter = new ArrayAdapter<String>(
+    ArrayAdapter<String> resourceListAdapter = new ArrayAdapter<>(
         getActivity(),
         R.layout.resource_text,
         R.id.resource_text_1,
@@ -52,8 +52,8 @@ public class MainFragment extends Fragment {
     resourceList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
       @Override
       public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        onResourceSelectedListener.onResourceSelected(
-            ResourceType.getType(ResourceType.getNames()[i]));
+        String resourceName = (String) adapterView.getAdapter().getItem(i);
+        onResourceSelectedListener.onResourceSelected(ResourceType.getType(resourceName));
       }
     });
 

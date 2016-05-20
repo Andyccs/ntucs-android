@@ -5,16 +5,16 @@ import java.util.Hashtable;
 
 public class ResourceType {
 
-  private static final String PROJECT_RESOURCE = "projects";
+  static final String PROJECT_RESOURCE = "projects";
   private static final String PROJECT_RESOURCE_NAME = "Course Projects";
 
-  private static final String FYP_RESOURCE = "fyp";
+  static final String FYP_RESOURCE = "fyp";
   private static final String FYP_RESOURCE_NAME = "Final Year Projects";
 
-  private static final String PYP_RESOURCE = "pyp";
+  static final String PYP_RESOURCE = "pyp";
   private static final String PYP_RESOURCE_NAME = "PYP Solutions";
 
-  private static final String SUMARRY_RESOURCE = "summary";
+  static final String SUMARRY_RESOURCE = "summary";
   private static final String SUMMARY_RESOURCE_NAME = "Summaries and Notes";
 
   private static final String[] RESOURCE_NAMES = new String[] {
