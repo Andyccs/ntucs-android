@@ -25,6 +25,7 @@ public class ResourceType {
   };
 
   private static final Dictionary<String, String> RESOURCE_TYPE_TO_NAME = new Hashtable<>();
+
   static {
     RESOURCE_TYPE_TO_NAME.put(PROJECT_RESOURCE, PROJECT_RESOURCE_NAME);
     RESOURCE_TYPE_TO_NAME.put(FYP_RESOURCE, FYP_RESOURCE_NAME);
@@ -33,6 +34,7 @@ public class ResourceType {
   }
 
   private static final Dictionary<String, String> RESOURCE_NAME_TO_TYPE = new Hashtable<>();
+
   static {
     RESOURCE_NAME_TO_TYPE.put(PROJECT_RESOURCE_NAME, PROJECT_RESOURCE);
     RESOURCE_NAME_TO_TYPE.put(FYP_RESOURCE_NAME, FYP_RESOURCE);

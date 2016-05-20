@@ -60,6 +60,6 @@ public class MainActivity extends AppCompatActivity implements
 
   @Override
   public void onResourceSelected(int id) {
-    System.out.println("hello world: "+ id);
+    System.out.println("hello world: " + id);
   }
 }

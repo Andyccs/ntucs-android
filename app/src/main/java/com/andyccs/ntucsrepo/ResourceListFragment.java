@@ -75,8 +75,8 @@ public class ResourceListFragment extends Fragment {
     resourceList.setAdapter(resourceListAdapter);
     resourceList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
       @Override
-      public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        ResourceModel resource = (ResourceModel) adapterView.getAdapter().getItem(i);
+      public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+        ResourceModel resource = (ResourceModel) adapterView.getAdapter().getItem(position);
         onResourceSelectedListener.onResourceSelected(resource.getId());
       }
     });

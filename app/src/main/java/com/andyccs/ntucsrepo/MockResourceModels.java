@@ -5,8 +5,6 @@ package com.andyccs.ntucsrepo;
  */
 public class MockResourceModels {
   static ResourceModel[] getMocks() {
-    ResourceModel[] mocks = new ResourceModel[2];
-
     ResourceModel resource1 = new ResourceModel();
     resource1.setId(1);
     resource1.setName("CZ4024-13-14-2 PYP Solutions");
@@ -17,6 +15,7 @@ public class MockResourceModels {
     resource2.setName("CZ4034-13-14-2 PYP Solutions");
     resource2.setType(ResourceType.PYP_RESOURCE);
 
+    ResourceModel[] mocks = new ResourceModel[2];
     mocks[0] = resource1;
     mocks[1] = resource2;
     return mocks;

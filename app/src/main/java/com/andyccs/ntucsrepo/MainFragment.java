@@ -51,8 +51,8 @@ public class MainFragment extends Fragment {
     resourceList.setAdapter(resourceListAdapter);
     resourceList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
       @Override
-      public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        String resourceName = (String) adapterView.getAdapter().getItem(i);
+      public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+        String resourceName = (String) adapterView.getAdapter().getItem(position);
         onResourceSelectedListener.onResourceSelected(ResourceType.getType(resourceName));
       }
     });
