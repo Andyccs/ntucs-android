@@ -29,9 +29,9 @@ public class MainActivity extends AppCompatActivity {
     });
 
     if (findViewById(R.id.fragment_container) != null) {
-      MainActivityFragment mainActivityFragment = new MainActivityFragment();
+      MainFragment mainFragment = new MainFragment();
       getSupportFragmentManager().beginTransaction()
-          .add(R.id.fragment_container, mainActivityFragment).commit();
+          .add(R.id.fragment_container, mainFragment).commit();
     }
   }
 
