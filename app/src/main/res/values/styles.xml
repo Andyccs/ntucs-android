@@ -17,4 +17,9 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="MaterialLightListView">
+        <item name="android:divider">@color/listDivider</item>
+        <item name="android:dividerHeight">@dimen/list_divider_height</item>
+    </style>
+
 </resources>
