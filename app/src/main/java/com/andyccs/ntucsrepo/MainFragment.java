@@ -14,10 +14,6 @@ import android.widget.ListView;
  * A placeholder fragment containing a simple view.
  */
 public class MainFragment extends Fragment {
-  public interface OnResourceSelectedListener {
-    void onResourceSelected(String resource);
-  }
-
   private static final String[] RESOURCE_LIST = new String[] {
       "Course Projects",
       "Final Year Project",
@@ -34,20 +30,27 @@ public class MainFragment extends Fragment {
 
   private ListView resourceList;
 
-  OnResourceSelectedListener onResourceSelectedListener;
+  OnResourceTypeSelectedListener onResourceSelectedListener;
 
   public MainFragment() {
+    // Required empty public constructor
   }
 
   @Override
   public void onAttach(Context context) {
     super.onAttach(context);
-    try {
-      onResourceSelectedListener = (OnResourceSelectedListener) context;
-    } catch (ClassCastException e) {
-      throw new ClassCastException(context.toString()
-          + " must implement OnHeadlineSelectedListener");
+    if (context instanceof OnResourceTypeSelectedListener) {
+      onResourceSelectedListener = (OnResourceTypeSelectedListener) context;
+    } else {
+      throw new RuntimeException(context.toString()
+          + " must implement OnResourceTypeSelectedListener");
     }
+  }
+
+  @Override
+  public void onDetach() {
+    super.onDetach();
+    onResourceSelectedListener = null;
   }
 
   @Override
@@ -70,6 +73,10 @@ public class MainFragment extends Fragment {
     });
 
     return mainView;
+  }
+
+  public interface OnResourceTypeSelectedListener {
+    void onResourceSelected(String resource);
   }
 
 }
