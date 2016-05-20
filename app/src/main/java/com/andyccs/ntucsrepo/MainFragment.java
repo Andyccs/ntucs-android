@@ -10,23 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-/**
- * A placeholder fragment containing a simple view.
- */
 public class MainFragment extends Fragment {
-  private static final String[] RESOURCE_LIST = new String[] {
-      "Course Projects",
-      "Final Year Project",
-      "PYP Solutions",
-      "Summaries",
-  };
-
-  private static final String[] RESOURCE_VALUE = new String[] {
-      "projects",
-      "fyp",
-      "pyp",
-      "summary"
-  };
 
   private ListView resourceList;
 
@@ -63,12 +47,13 @@ public class MainFragment extends Fragment {
         getActivity(),
         R.layout.resource_text,
         R.id.resource_text_1,
-        RESOURCE_LIST);
+        ResourceType.getNames());
     resourceList.setAdapter(resourceListAdapter);
     resourceList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
       @Override
       public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        onResourceSelectedListener.onResourceSelected(RESOURCE_VALUE[i]);
+        onResourceSelectedListener.onResourceSelected(
+            ResourceType.getType(ResourceType.getNames()[i]));
       }
     });
 
