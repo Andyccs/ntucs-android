@@ -1,6 +1,7 @@
 package com.andyccs.ntucsrepo;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -14,12 +15,13 @@ import android.widget.TextView;
 
 
 public class ResourceListFragment extends Fragment {
-  private static final String TAG = ResourceListFragment.class.getName();
   private static final String RESOURCE_TYPE_PARAM = "resource_type";
 
   private String resourceType;
 
   private OnResourceSelectedListener onResourceSelectedListener;
+
+  private ArrayAdapter<ResourceModel> resourceListAdapter;
 
   /**
    * Use this factory method to create a new instance of
@@ -53,9 +55,6 @@ public class ResourceListFragment extends Fragment {
       throw new NullPointerException(
           "You must provide resource type param to ResourceListFragment");
     }
-
-    // TODO: need to get data by using resourceType filter
-    Log.d(TAG, "resource type: " + resourceType);
   }
 
   @Override
@@ -67,12 +66,12 @@ public class ResourceListFragment extends Fragment {
     resourceListTitle.setText(ResourceType.getName(resourceType));
 
     ListView resourceList = (ListView) view.findViewById(R.id.resource_list);
-    ArrayAdapter<ResourceModel> resourceListAdapter = new ArrayAdapter<>(
+    resourceListAdapter = new ArrayAdapter<>(
         getActivity(),
         R.layout.resource_text,
-        R.id.resource_text_1,
-        MockResourceModels.getMocks());
+        R.id.resource_text_1);
     resourceList.setAdapter(resourceListAdapter);
+
     resourceList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
       @Override
       public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -80,6 +79,17 @@ public class ResourceListFragment extends Fragment {
         onResourceSelectedListener.onResourceSelected(resource.getId());
       }
     });
+
+    DownloadResourcesAsyncTask downloadDataTask = new DownloadResourcesAsyncTask() {
+      @Override
+      protected void onPostExecute(ResourceModel[] resourceModels) {
+        super.onPostExecute(resourceModels);
+        resourceListAdapter.addAll(resourceModels);
+        resourceListAdapter.notifyDataSetChanged();
+      }
+    };
+    downloadDataTask.setResourceType(resourceType);
+    downloadDataTask.execute();
 
     return view;
   }

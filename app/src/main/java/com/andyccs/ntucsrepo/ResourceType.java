@@ -24,6 +24,21 @@ public class ResourceType {
       SUMMARY_RESOURCE_NAME
   };
 
+  private static final String RESOURCES_STRING;
+
+  static {
+    String comma = ", ";
+    StringBuilder builder = new StringBuilder();
+    builder.append(PROJECT_RESOURCE)
+        .append(comma)
+        .append(FYP_RESOURCE)
+        .append(comma)
+        .append(PYP_RESOURCE)
+        .append(comma)
+        .append(SUMARRY_RESOURCE);
+    RESOURCES_STRING = builder.toString();
+  }
+
   private static final Dictionary<String, String> RESOURCE_TYPE_TO_NAME = new Hashtable<>();
 
   static {
@@ -52,5 +67,13 @@ public class ResourceType {
 
   static String getType(String resourceName) {
     return RESOURCE_NAME_TO_TYPE.get(resourceName);
+  }
+
+  static boolean isValidResourceType(String resourceType) {
+    return RESOURCE_TYPE_TO_NAME.get(resourceType) != null;
+  }
+
+  static String allResourceNamesToString() {
+    return RESOURCES_STRING;
   }
 }
