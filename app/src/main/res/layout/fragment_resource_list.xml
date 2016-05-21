@@ -21,13 +21,13 @@
             android:layout_height="wrap_content"
             android:paddingBottom="10dp"
             android:textColor="@android:color/secondary_text_light"
-            android:id="@+id/resource_list_title"/>
+            android:id="@+id/resource_list_title" />
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/resource_list"
-            style="@style/MaterialLightListView" />
+            android:animateLayoutChanges="true" />
 
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>
