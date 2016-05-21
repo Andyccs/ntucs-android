@@ -3,9 +3,10 @@ package com.andyccs.ntucsrepo;
 public class ResourceModel {
   private int id;
   private String name;
-  private String pdfLink;
-  private String githubRepo;
+  private String link;
+  private String github;
   private String type;
+  private String course;
 
   public int getId() {
     return id;
@@ -23,20 +24,20 @@ public class ResourceModel {
     this.name = name;
   }
 
-  public String getPdfLink() {
-    return pdfLink;
+  public String getLink() {
+    return link;
   }
 
-  public void setPdfLink(String pdfLink) {
-    this.pdfLink = pdfLink;
+  public void setLink(String link) {
+    this.link = link;
   }
 
-  public String getGithubRepo() {
-    return githubRepo;
+  public String getGithub() {
+    return github;
   }
 
-  public void setGithubRepo(String githubRepo) {
-    this.githubRepo = githubRepo;
+  public void setGithub(String github) {
+    this.github = github;
   }
 
   public String getType() {
@@ -45,6 +46,14 @@ public class ResourceModel {
 
   public void setType(String type) {
     this.type = type;
+  }
+
+  public String getCourse() {
+    return course;
+  }
+
+  public void setCourse(String course) {
+    this.course = course;
   }
 
   @Override
