@@ -1,7 +1,6 @@
 package com.andyccs.ntucsrepo;
 
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -12,11 +11,12 @@ public class MainActivity extends AppCompatActivity implements
     MainFragment.OnResourceTypeSelectedListener,
     ResourceListFragment.OnResourceSelectedListener {
 
+  private Toolbar toolbar;
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+    toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
     if (findViewById(R.id.fragment_container) != null) {
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements
   }
 
   @Override
-  public void onResourceSelected(int id) {
-    System.out.println("hello world: " + id);
+  public void onResourceSelected(ResourceModel resourceModel) {
+    System.out.println("hello world: " + resourceModel);
   }
 }

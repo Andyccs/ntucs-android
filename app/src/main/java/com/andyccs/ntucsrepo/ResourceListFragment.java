@@ -6,13 +6,12 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -33,7 +32,8 @@ public class ResourceListFragment extends Fragment {
 
   private OnResourceSelectedListener onResourceSelectedListener;
 
-  private ArrayAdapter<ResourceModel> resourceListAdapter;
+  private RecyclerView resourceList;
+  private ResourceListAdapter resourceListAdapter;
 
   /**
    * Use this factory method to create a new instance of
@@ -77,20 +77,23 @@ public class ResourceListFragment extends Fragment {
     TextView resourceListTitle = (TextView) view.findViewById(R.id.resource_list_title);
     resourceListTitle.setText(ResourceType.getName(resourceType));
 
-    ListView resourceList = (ListView) view.findViewById(R.id.resource_list);
-    resourceListAdapter = new ArrayAdapter<>(
-        getActivity(),
-        R.layout.resource_text,
-        R.id.resource_text_1);
+    resourceList = (RecyclerView) view.findViewById(R.id.resource_list);
+    resourceList.setHasFixedSize(true);
+
+    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+    resourceList.setLayoutManager(linearLayoutManager);
+
+    resourceListAdapter = new ResourceListAdapter();
     resourceList.setAdapter(resourceListAdapter);
 
-    resourceList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-      @Override
-      public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-        ResourceModel resource = (ResourceModel) adapterView.getAdapter().getItem(position);
-        onResourceSelectedListener.onResourceSelected(resource.getId());
-      }
-    });
+    resourceList.addOnItemTouchListener(
+        new RecycleItemClickListener(
+            getActivity(), new RecycleItemClickListener.OnItemClickListener() {
+          @Override
+          public void onItemClick(View view, int position) {
+            onResourceSelectedListener.onResourceSelected(resourceListAdapter.getItem(position));
+          }
+        }));
 
     if (!isNetworkAvailable()) {
       Snackbar.make(
@@ -114,7 +117,8 @@ public class ResourceListFragment extends Fragment {
       @Override
       public void onDataChange(DataSnapshot dataSnapshot) {
         GenericTypeIndicator<List<ResourceModel>> type =
-            new GenericTypeIndicator<List<ResourceModel>>() {};
+            new GenericTypeIndicator<List<ResourceModel>>() {
+            };
         List<ResourceModel> resourceModels = dataSnapshot.getValue(type);
         resourceListAdapter.addAll(resourceModels);
         resourceListAdapter.notifyDataSetChanged();
@@ -147,7 +151,7 @@ public class ResourceListFragment extends Fragment {
   }
 
   public interface OnResourceSelectedListener {
-    void onResourceSelected(int id);
+    void onResourceSelected(ResourceModel resourceModel);
   }
 
   private boolean isNetworkAvailable() {
