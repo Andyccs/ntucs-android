@@ -3,4 +3,8 @@
     <string name="action_settings">Settings</string>
     <string name="main_activity_title">NTU CS Repository</string>
     <string name="choose_resources">Choose resources</string>
+    <string name="resource_type_projects">Course Projects</string>
+    <string name="resource_type_fyps">Final Year Projects</string>
+    <string name="resource_type_pyps">PYP Solutions</string>
+    <string name="resource_type_summaries">Summaries and Notes</string>
 </resources>

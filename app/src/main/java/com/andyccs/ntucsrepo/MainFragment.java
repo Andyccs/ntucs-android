@@ -57,13 +57,14 @@ public class MainFragment extends Fragment {
         getActivity(),
         R.layout.resource_text,
         R.id.resource_text_1,
-        ResourceType.getNames());
+        ResourceType.getNames(getActivity()));
     resourceList.setAdapter(resourceListAdapter);
     resourceList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
       @Override
       public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
         String resourceName = (String) adapterView.getAdapter().getItem(position);
-        onResourceSelectedListener.onResourceSelected(ResourceType.getType(resourceName));
+        onResourceSelectedListener
+            .onResourceSelected(ResourceType.getType(getActivity(), resourceName));
       }
     });
 

@@ -72,7 +72,7 @@ public class ResourceListFragment extends Fragment {
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
-    setToolbarTitle.setToolbarTitle(ResourceType.getName(resourceType));
+    setToolbarTitle.setToolbarTitle(ResourceType.getName(getActivity(), resourceType));
 
     View view = inflater.inflate(R.layout.fragment_resource_list, container, false);
 
@@ -109,8 +109,7 @@ public class ResourceListFragment extends Fragment {
 
   private void readFromDatabase() {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    String firebaseReference = ResourceType.getFirebaseReferenceByType(resourceType);
-    DatabaseReference databaseReference = database.getReference(firebaseReference);
+    DatabaseReference databaseReference = database.getReference(resourceType);
 
     ValueEventListener valueEventListener = new ValueEventListener() {
       @Override
