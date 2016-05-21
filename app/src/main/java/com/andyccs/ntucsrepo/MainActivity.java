@@ -1,6 +1,7 @@
 package com.andyccs.ntucsrepo;
 
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -9,15 +10,20 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity implements
     MainFragment.OnResourceTypeSelectedListener,
-    ResourceListFragment.OnResourceSelectedListener {
+    ResourceListFragment.OnResourceSelectedListener,
+    SetToolbarTitle {
 
   private Toolbar toolbar;
+  private CollapsingToolbarLayout collapsingToolbarLayout;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
+
+    collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
 
     if (findViewById(R.id.fragment_container) != null) {
       MainFragment mainFragment = new MainFragment();
@@ -62,5 +68,10 @@ public class MainActivity extends AppCompatActivity implements
   @Override
   public void onResourceSelected(ResourceModel resourceModel) {
     System.out.println("hello world: " + resourceModel);
+  }
+
+  @Override
+  public void setToolbarTitle(String title) {
+    collapsingToolbarLayout.setTitle(title);
   }
 }

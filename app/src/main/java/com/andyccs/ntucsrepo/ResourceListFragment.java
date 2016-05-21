@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,6 +30,7 @@ public class ResourceListFragment extends Fragment {
   private String resourceType;
 
   private OnResourceSelectedListener onResourceSelectedListener;
+  SetToolbarTitle setToolbarTitle;
 
   private RecyclerView resourceList;
   private ResourceListAdapter resourceListAdapter;
@@ -72,10 +72,9 @@ public class ResourceListFragment extends Fragment {
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
-    View view = inflater.inflate(R.layout.fragment_resource_list, container, false);
+    setToolbarTitle.setToolbarTitle(ResourceType.getName(resourceType));
 
-    TextView resourceListTitle = (TextView) view.findViewById(R.id.resource_list_title);
-    resourceListTitle.setText(ResourceType.getName(resourceType));
+    View view = inflater.inflate(R.layout.fragment_resource_list, container, false);
 
     resourceList = (RecyclerView) view.findViewById(R.id.resource_list);
     resourceList.setHasFixedSize(true);
@@ -141,6 +140,13 @@ public class ResourceListFragment extends Fragment {
     } else {
       throw new RuntimeException(context.toString()
           + " must implement OnResourceSelectedListener");
+    }
+
+    if (context instanceof SetToolbarTitle) {
+      setToolbarTitle = (SetToolbarTitle) context;
+    } else {
+      throw new RuntimeException(context.toString()
+          + " must implement SetToolbarTitle");
     }
   }
 

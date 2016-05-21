@@ -15,6 +15,7 @@ public class MainFragment extends Fragment {
   private ListView resourceList;
 
   OnResourceTypeSelectedListener onResourceSelectedListener;
+  SetToolbarTitle setToolbarTitle;
 
   public MainFragment() {
     // Required empty public constructor
@@ -29,6 +30,13 @@ public class MainFragment extends Fragment {
       throw new RuntimeException(context.toString()
           + " must implement OnResourceTypeSelectedListener");
     }
+
+    if (context instanceof SetToolbarTitle) {
+      setToolbarTitle = (SetToolbarTitle) context;
+    } else {
+      throw new RuntimeException(context.toString()
+          + " must implement SetToolbarTitle");
+    }
   }
 
   @Override
@@ -40,6 +48,8 @@ public class MainFragment extends Fragment {
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
+    setToolbarTitle.setToolbarTitle(getString(R.string.choose_resources));
+
     View mainView = inflater.inflate(R.layout.fragment_main, container, false);
     resourceList = (ListView) mainView.findViewById(R.id.resource_type_list);
 

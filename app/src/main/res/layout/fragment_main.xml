@@ -9,14 +9,6 @@
     android:orientation="vertical"
     tools:context="com.andyccs.ntucsrepo.MainFragment">
 
-    <TextView
-        style="@style/Base.TextAppearance.AppCompat.Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
-        android:textColor="@android:color/secondary_text_light"
-        android:text="@string/choose_resources" />
-
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
