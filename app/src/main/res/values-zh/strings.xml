@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_settings">设定</string>
+    <string name="choose_resources">选择资源</string>
+    <string name="resource_type_projects">小组功课</string>
+    <string name="resource_type_fyps">毕业设计</string>
+    <string name="resource_type_pyps">历年考题答案</string>
+    <string name="resource_type_summaries">课程摘要</string>
+</resources>
