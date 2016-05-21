@@ -1,7 +1,10 @@
 package com.andyccs.ntucsrepo;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -89,7 +92,20 @@ public class ResourceListFragment extends Fragment {
       }
     });
 
-    // Read data from database
+    if (!isNetworkAvailable()) {
+      Snackbar.make(
+          getActivity().findViewById(android.R.id.content),
+          "No internet connection",
+          Snackbar.LENGTH_LONG).show();
+    } else {
+      // Read data from database
+      readFromDatabase();
+    }
+
+    return view;
+  }
+
+  private void readFromDatabase() {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     String firebaseReference = ResourceType.getFirebaseReferenceByType(resourceType);
     DatabaseReference databaseReference = database.getReference(firebaseReference);
@@ -111,8 +127,6 @@ public class ResourceListFragment extends Fragment {
       }
     };
     databaseReference.addValueEventListener(valueEventListener);
-
-    return view;
   }
 
   @Override
@@ -134,5 +148,12 @@ public class ResourceListFragment extends Fragment {
 
   public interface OnResourceSelectedListener {
     void onResourceSelected(int id);
+  }
+
+  private boolean isNetworkAvailable() {
+    ConnectivityManager connectivityManager
+        = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+    NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+    return activeNetworkInfo != null && activeNetworkInfo.isConnected();
   }
 }

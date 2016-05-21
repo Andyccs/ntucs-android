@@ -1,0 +1,294 @@
+{
+  "summaries": [
+    {
+      "github": "https://github.com/Andyccs/CZ4013-distributed-system-summary",
+      "id": 1,
+      "link": "https://www.sharelatex.com/github/repos/Andyccs/CZ4013-distributed-system-summary/builds/93504e0cf85dd6f2f7829537d10d93c9f79b48ee/raw/output.pdf",
+      "name": "Summary for Distributed System",
+      "course": "CZ4013 Distributed System",
+      "type": "summary"
+    },{
+      "github": "https://github.com/Andyccs/ntucs-repo/blob/master/CZ4024/CZ4024CheatSheet.docx",
+      "id": 2,
+      "link": null,
+      "name": "Cheat Sheet for Cryptography and Network Security",
+      "course": "CZ4024 Cryptography and Network Security",
+      "type": "summary"
+    },{
+      "github": "https://github.com/Andyccs/data-mining-summary",
+      "id": 3,
+      "link": "https://github.com/Andyccs/data-mining-summary/releases/download/v1.0/CZ4032DataMiningSummary.pdf",
+      "name": "Summary for Data Analytics and Mining",
+      "course": "CZ4032 Data Analytics and Mining",
+      "type": "summary"
+    },{
+      "github": "https://github.com/Andyccs/CZ4034-information-retrieval-summary",
+      "id": 4,
+      "link": "https://www.sharelatex.com/github/repos/Andyccs/CZ4034-information-retrieval-summary/builds/latest/output.pdf",
+      "name": "Summary for Information Retrieval",
+      "course": "CZ4034 Information Retrieval",
+      "type": "summary"
+    },{
+      "github": "https://github.com/Andyccs/CZ4041-machine-learning-summary",
+      "id": 5,
+      "link": "https://github.com/Andyccs/CZ4041-machine-learning-summary/releases/download/v1.1/CZ4041MachineLearningSummary.pdf",
+      "name": "Summary for Machine Learning",
+      "course": "CZ4041 Machine Learning",
+      "type": "summary"
+    },{
+      "github": "https://github.com/Andyccs/neural-network-summary",
+      "id": 6,
+      "link": "https://github.com/Andyccs/neural-network-summary/releases/download/v1.0/CZ4042NeuralNetworkSummary.pdf",
+      "name": "Summary for Neural Network",
+      "course": "CZ4042 Neural Network",
+      "type": "summary"
+    },{
+      "github": "https://github.com/Andyccs/ntucs-repo/blob/master/CZ8003/HRMSummary.md",
+      "id": 7,
+      "link": null,
+      "name": "Summary for Human Resource Management and Entrepreneurship",
+      "course": "CZ8003 Human Resource Management and Entrepreneurship",
+      "type": "summary"
+    }
+  ],
+  "projects": [
+    {
+      "github": "https://github.com/Andyccs/ntucs-repo/blob/master/CZ1003/hangman.py",
+      "id": 8,
+      "link": null,
+      "name": "Hangman",
+      "course": "CZ1003 Introduction to Computational Thinking",
+      "type": "project"
+    },{
+      "github": "https://github.com/Andyccs/ntucs-repo/blob/master/CZ1003/dynamic_pattern.py",
+      "id": 9,
+      "link": null,
+      "name": "Dynamic Pattern",
+      "course": "CZ1003 Introduction to Computational Thinking",
+      "type": "project"
+    },{
+      "github": "https://github.com/Andyccs/CZ2002-moblima",
+      "id": 10,
+      "link": null,
+      "name": "Movie Booking and Listing Management Application",
+      "course": "CZ2002 Object-oriented Design and Programming",
+      "type": "project"
+    },{
+      "github": "https://github.com/Andyccs/ntucs-repo/blob/master/CZ2003/Assignment1.wrl",
+      "id": 11,
+      "link": null,
+      "name": "Implicit Fantasies",
+      "course": "CZ2003 Computer Graphic",
+      "type": "project"
+    },{
+      "github": "https://github.com/Andyccs/ntucs-repo/blob/master/CZ2003/Assignment2.wrl",
+      "id": 12,
+      "link": null,
+      "name": "Parametric Metamorphoses",
+      "course": "CZ2003 Computer Graphic",
+      "type": "project"
+    },{
+      "github": "https://github.com/Andyccs/cz2006-eproctor",
+      "id": 13,
+      "link": null,
+      "name": "eProctor Online Invigilation",
+      "course": "CZ2006 Software Engineering",
+      "type": "project"
+    },{
+      "github": "https://github.com/Andyccs/PYP_Cloud",
+      "id": 14,
+      "link": null,
+      "name": "PYP Solutions, Backend",
+      "course": "CZ3002 Advance Software Engineering",
+      "type": "project"
+    },{
+      "github": "https://github.com/Andyccs/PYP_Android",
+      "id": 15,
+      "link": null,
+      "name": "PYP Solutions, Android",
+      "course": "CZ3002 Advance Software Engineering",
+      "type": "project"
+    },{
+      "github": "https://github.com/soelynn/LynnuxCMS",
+      "id": 16,
+      "link": null,
+      "name": "Crisis Management System, Backend",
+      "course": "CZ3003 System Analysis and Design",
+      "type": "project"
+    },{
+      "github": "https://github.com/soelynn/LynnuxFOS_Android",
+      "id": 17,
+      "link": null,
+      "name": "Crisis Management System, Frontend",
+      "course": "CZ3003 System Analysis and Design",
+      "type": "project"
+    },{
+      "github": "https://github.com/imdreamrunner/RobotSimulator",
+      "id": 18,
+      "link": null,
+      "name": "Robot Simulator",
+      "course": "CZ3004 Multi-displinary Project",
+      "type": "project"
+    },{
+      "github": "https://github.com/Andyccs/MDP_Arduino",
+      "id": 19,
+      "link": null,
+      "name": "Arduino",
+      "course": "CZ3004 Multi-displinary Project",
+      "type": "project"
+    },{
+      "github": "https://github.com/Andyccs/rpicomm",
+      "id": 20,
+      "link": null,
+      "name": "Rasberry Pi",
+      "course": "CZ3004 Multi-displinary Project",
+      "type": "project"
+    },{
+      "github": "https://github.com/Andyccs/rfc865udp",
+      "id": 21,
+      "link": null,
+      "name": "Programming Network Applications using Sockets",
+      "course": "CE3005 Computer Network",
+      "type": "project"
+    },{
+      "github": "https://github.com/Andyccs/PL3007Compiler",
+      "id": 22,
+      "link": null,
+      "name": "Compiler for PL3007",
+      "course": "CZ3007 Compiler Technique",
+      "type": "project"
+    },{
+      "github": "https://github.com/cly753/CX4013-Remote-File-System",
+      "id": 23,
+      "link": null,
+      "name": "Remote File System",
+      "course": "CZ4013 Distributed System",
+      "type": "project"
+    },{
+      "github": "https://github.com/Andyccs/CZ4024AttackRC4",
+      "id": 24,
+      "link": null,
+      "name": "Attack on RC4 Protocol",
+      "course": "CZ4024 Cryptography and Network Security",
+      "type": "project"
+    },{
+      "github": "https://github.com/Andyccs/sport-news-retrieval",
+      "id": 25,
+      "link": null,
+      "name": "Sport Tweets Retrieval",
+      "course": "CZ4034 Information Retrieval Assignment",
+      "type": "project"
+    },{
+      "github": "https://github.com/Andyccs/cifar10",
+      "id": 26,
+      "link": null,
+      "name": "CIFAR-10",
+      "course": "CZ4041 Machine Learning Project",
+      "type": "project"
+    },{
+      "github": "https://github.com/soelynn/SAM",
+      "id": 27,
+      "link": null,
+      "name": "Sentiment Analysis on Movie Review",
+      "course": "CZ4041 Machine Learning Project",
+      "type": "project"
+    },{
+      "github": "https://github.com/Andyccs/Neural-Network-Assignment",
+      "id": 28,
+      "link": null,
+      "name": "Housing Price prediction and Spam Emails Prediction",
+      "course": "CZ4042 Neural Network Assignment",
+      "type": "project"
+    },{
+      "github": "https://github.com/Andyccs/Programming-for-Art-and-Games",
+      "id": 29,
+      "link": null,
+      "name": "Donkey Kong Game",
+      "course": "DM2008 Programming for Arts and Games",
+      "type": "project"
+    }
+  ],
+  "pyps": [
+    {
+      "github": "https://github.com/Andyccs/ntucs-pyp",
+      "id": 30,
+      "link": "https://github.com/Andyccs/ntucs-pyp/releases/download/v0.13/cz4013-13-14-2.pdf",
+      "name": "cz4013-13-14-2",
+      "course": "CZ4013 Distributed System",
+      "type": "pyp"
+    },{
+      "github": "https://github.com/Andyccs/ntucs-pyp",
+      "id": 31,
+      "link": "https://github.com/Andyccs/ntucs-pyp/releases/download/v0.13/cz4013-14-15-2.pdf",
+      "name": "cz4013-14-15-2",
+      "course": "CZ4013 Distributed System",
+      "type": "pyp"
+    },{
+      "github": "https://github.com/Andyccs/ntucs-pyp",
+      "id": 32,
+      "link": "https://github.com/Andyccs/ntucs-pyp/releases/download/v0.13/cz4034-12-13-2.pdf",
+      "name": "cz4034-12-13-2",
+      "course": "CZ4034 Information Retrieval",
+      "type": "pyp"
+    },{
+      "github": "https://github.com/Andyccs/ntucs-pyp",
+      "id": 33,
+      "link": "https://github.com/Andyccs/ntucs-pyp/releases/download/v0.13/cz4034-13-14-2.pdf",
+      "name": "cz4034-13-14-2",
+      "course": "CZ4034 Information Retrieval",
+      "type": "pyp"
+    },{
+      "github": "https://github.com/Andyccs/ntucs-pyp",
+      "id": 34,
+      "link": "https://github.com/Andyccs/ntucs-pyp/releases/download/v0.13/cz4034-14-15-2.pdf",
+      "name": "cz4034-14-15-2",
+      "course": "CZ4034 Information Retrieval",
+      "type": "pyp"
+    },{
+      "github": "https://github.com/Andyccs/ntucs-pyp",
+      "id": 35,
+      "link": "https://github.com/Andyccs/ntucs-pyp/releases/download/v0.13/cz4041-15-16-2.pdf",
+      "name": "cz4041-15-16-2",
+      "course": "CZ4041 Machine Learning",
+      "type": "pyp"
+    }
+  ],
+  "fyps": [
+    {
+      "github": "https://github.com/Andyccs/sqat",
+      "id": 36,
+      "link": null,
+      "name": "Software Quality Analysis Tool",
+      "course": "CZ4079 Final Year Project",
+      "type": "fyp"
+    },{
+      "github": "https://github.com/Andyccs/sqat-report",
+      "id": 37,
+      "link": "https://github.com/Andyccs/sqat-report/releases/download/v1.0/SQAT_FYP_Report_FULL.pdf",
+      "name": "Report for Software Quality Analysis Tool",
+      "course": "CZ4079 Final Year Project",
+      "type": "fyp"
+    },{
+      "github": "https://github.com/Andyccs/sqat-presentation",
+      "id": 38,
+      "link": "https://www.sharelatex.com/github/repos/Andyccs/sqat-presentation/builds/latest/output.pdf",
+      "name": "Presentation for Software Quality Analysis Tool",
+      "course": "CZ4079 Final Year Project",
+      "type": "fyp"
+    },{
+      "github": "https://github.com/Andyccs/nwk_mall",
+      "id": 3,
+      "link": null,
+      "name": "Gamification for E-commerce Android Application, Server Side",
+      "course": "CZ4079 Final Year Project",
+      "type": "fyp"
+    },{
+      "github": "https://github.com/Andyccs/nwk_android",
+      "id": 3,
+      "link": null,
+      "name": "Gamification for E-commerce Android Application, Android Client",
+      "course": "CZ4079 Final Year Project",
+      "type": "fyp"
+    }
+  ]
+}
