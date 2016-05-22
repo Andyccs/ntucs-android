@@ -11,4 +11,5 @@
     <string name="no_internet_connection">没有网络讯号</string>
     <string name="no_resource_found">无法寻获资源</string>
     <string name="try_again">诶呀！我们无法完成这个动作，请稍后再试。</string>
+    <string name="main_activity_title">南大CS资源库</string>
 </resources>
