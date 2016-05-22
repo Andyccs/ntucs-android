@@ -1,8 +1,10 @@
 package com.andyccs.ntucsrepo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -90,7 +92,23 @@ public class ResourceListFragment extends Fragment {
             getActivity(), new RecycleItemClickListener.OnItemClickListener() {
           @Override
           public void onItemClick(View view, int position) {
-            onResourceSelectedListener.onResourceSelected(resourceListAdapter.getItem(position));
+            ResourceModel selectedResouce = resourceListAdapter.getItem(position);
+            onResourceSelectedListener.onResourceSelected(selectedResouce);
+
+            String link = null;
+            if (selectedResouce.getLink() != null) {
+              link = selectedResouce.getLink();
+            } else if (selectedResouce.getGithub() != null) {
+              link = selectedResouce.getGithub();
+            }
+
+            if (link == null) {
+              Snackbar.make(view, "No resource found", Snackbar.LENGTH_SHORT).show();
+              return;
+            }
+            Intent browserIntent =
+                new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+            startActivity(browserIntent);
           }
         }));
 
