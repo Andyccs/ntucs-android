@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,8 +35,9 @@ public class ResourceListFragment extends Fragment {
   private OnResourceSelectedListener onResourceSelectedListener;
   SetToolbarTitle setToolbarTitle;
 
-  private RecyclerView resourceList;
   private ResourceListAdapter resourceListAdapter;
+
+  private LinearLayout progressLayout;
 
   /**
    * Use this factory method to create a new instance of
@@ -78,7 +80,9 @@ public class ResourceListFragment extends Fragment {
 
     View view = inflater.inflate(R.layout.fragment_resource_list, container, false);
 
-    resourceList = (RecyclerView) view.findViewById(R.id.resource_list);
+    progressLayout = (LinearLayout) view.findViewById(R.id.progress_layout);
+
+    RecyclerView resourceList = (RecyclerView) view.findViewById(R.id.resource_list);
     resourceList.setHasFixedSize(true);
 
     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
@@ -132,6 +136,8 @@ public class ResourceListFragment extends Fragment {
     ValueEventListener valueEventListener = new ValueEventListener() {
       @Override
       public void onDataChange(DataSnapshot dataSnapshot) {
+        progressLayout.setVisibility(View.GONE);
+
         GenericTypeIndicator<List<ResourceModel>> type =
             new GenericTypeIndicator<List<ResourceModel>>() {
             };
@@ -144,6 +150,11 @@ public class ResourceListFragment extends Fragment {
       public void onCancelled(DatabaseError databaseError) {
         // Failed to read value
         Log.w(TAG, "Failed to read value.", databaseError.toException());
+        progressLayout.setVisibility(View.GONE);
+        Snackbar.make(
+            getActivity().findViewById(android.R.id.content),
+            "Fail to read value, please try again.",
+            Snackbar.LENGTH_LONG).show();
       }
     };
     databaseReference.addValueEventListener(valueEventListener);
