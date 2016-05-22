@@ -107,7 +107,10 @@ public class ResourceListFragment extends Fragment {
             }
 
             if (link == null) {
-              Snackbar.make(view, "No resource found", Snackbar.LENGTH_SHORT).show();
+              Snackbar.make(
+                  view,
+                  getString(R.string.no_resource_found),
+                  Snackbar.LENGTH_SHORT).show();
               return;
             }
             Intent browserIntent =
@@ -119,7 +122,7 @@ public class ResourceListFragment extends Fragment {
     if (!isNetworkAvailable()) {
       Snackbar.make(
           getActivity().findViewById(android.R.id.content),
-          "No internet connection",
+          getString(R.string.no_internet_connection),
           Snackbar.LENGTH_LONG).show();
     } else {
       // Read data from database
@@ -153,7 +156,7 @@ public class ResourceListFragment extends Fragment {
         progressLayout.setVisibility(View.GONE);
         Snackbar.make(
             getActivity().findViewById(android.R.id.content),
-            "Fail to read value, please try again.",
+            getString(R.string.try_again),
             Snackbar.LENGTH_LONG).show();
       }
     };

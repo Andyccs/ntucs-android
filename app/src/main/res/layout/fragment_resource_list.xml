@@ -23,7 +23,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Getting your resources"
+                android:text="@string/getting_your_resources"
                 style="@style/TextAppearance.AppCompat.Subhead"
                 android:paddingTop="50dp"
                 android:paddingBottom="10dp"/>

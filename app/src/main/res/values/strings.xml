@@ -1,10 +1,23 @@
 <resources>
     <string name="app_name" translatable="false">NTU-CS Repo</string>
     <string name="main_activity_title" translatable="false">NTU CS Repository</string>
+
+    <!-- Main Menu-->
     <string name="action_settings">Settings</string>
+
+    <!-- Activity and Fragments -->
     <string name="choose_resources">Choose resources</string>
     <string name="resource_type_projects">Course Projects</string>
     <string name="resource_type_fyps">Final Year Projects</string>
     <string name="resource_type_pyps">PYP Solutions</string>
     <string name="resource_type_summaries">Summaries and Notes</string>
+
+    <!-- Info -->
+    <string name="getting_your_resources">Getting your resources</string>
+
+    <!-- Error -->
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="no_resource_found">No resource found</string>
+    <string name="try_again">Opss, we can\'t do this now, please try again.</string>
+
 </resources>
