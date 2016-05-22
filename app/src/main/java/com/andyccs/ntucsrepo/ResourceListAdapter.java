@@ -3,6 +3,7 @@ package com.andyccs.ntucsrepo;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -17,13 +18,16 @@ public class ResourceListAdapter extends RecyclerView.Adapter<ResourceListAdapte
     RelativeLayout view = (RelativeLayout) LayoutInflater.from(parent.getContext())
         .inflate(R.layout.resource_text_recycle, parent, false);
 
-    TextView textView = (TextView) view.findViewById(R.id.resource_text_1);
-    return new ViewHolder(view, textView);
+    TextView title = (TextView) view.findViewById(R.id.resource_text_1);
+    TextView subtitle = (TextView) view.findViewById(R.id.resource_text_2);
+    ImageView image = (ImageView) view.findViewById(R.id.resource_image_1);
+    return new ViewHolder(view, title, subtitle, image);
   }
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    holder.textView.setText(resources[position].getName());
+    holder.title.setText(resources[position].getName());
+    holder.subtitle.setText(resources[position].getCourse());
   }
 
   @Override
@@ -42,11 +46,15 @@ public class ResourceListAdapter extends RecyclerView.Adapter<ResourceListAdapte
 
   public class ViewHolder extends RecyclerView.ViewHolder {
     RelativeLayout view;
-    TextView textView;
-    public ViewHolder(RelativeLayout view, TextView textView) {
+    TextView title;
+    TextView subtitle;
+    ImageView image;
+    public ViewHolder(RelativeLayout view, TextView title, TextView subtitle, ImageView image) {
       super(view);
       this.view = view;
-      this.textView = textView;
+      this.title = title;
+      this.subtitle = subtitle;
+      this.image = image;
     }
   }
 }

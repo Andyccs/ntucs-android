@@ -43,7 +43,6 @@
             android:id="@+id/resource_text_2"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="CZ4024 Machine Learning"
             android:textSize="@dimen/abc_text_size_body_1_material" />
     </LinearLayout>
 
