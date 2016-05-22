@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">NTU-CS Repo</string>
+    <string name="app_name">NTU-CS Repo</string>
     <string name="main_activity_title" translatable="false">NTU CS Repository</string>
 
     <!-- Main Menu-->

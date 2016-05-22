@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_settings">设定</string>
-    <string name="choose_resources">选择资源</string>
+    <string name="choose_resources">请选择资源</string>
     <string name="resource_type_projects">小组功课</string>
     <string name="resource_type_fyps">毕业设计</string>
     <string name="resource_type_pyps">历年考题答案</string>
     <string name="resource_type_summaries">课程摘要</string>
+    <string name="getting_your_resources">正准备您的资源</string>
+    <string name="app_name">南大CS资源库</string>
+    <string name="no_internet_connection">没有网络讯号</string>
+    <string name="no_resource_found">无法寻获资源</string>
+    <string name="try_again">诶呀！我们无法完成这个动作，请稍后再试。</string>
 </resources>
