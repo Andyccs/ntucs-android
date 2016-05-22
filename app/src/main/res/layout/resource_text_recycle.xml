@@ -1,20 +1,50 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="48dp"
-    android:paddingTop="8dp"
-    android:paddingBottom="8dp"
+    android:layout_height="72dp"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
     android:focusable="true"
     android:clickable="true"
     android:background="?android:attr/selectableItemBackground">
 
-    <TextView
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/resource_text_1"
         android:layout_centerVertical="true"
-        android:ellipsize="end"
-        android:maxLines="1"
-        style="@style/Base.TextAppearance.AppCompat.Subhead" />
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:background="@drawable/ic_info_black_24dp"
+        android:id="@+id/resource_image_1"
+        android:focusable="true"
+        android:clickable="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_toStartOf="@id/resource_image_1"
+        android:layout_toLeftOf="@id/resource_image_1"
+        android:layout_centerVertical="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/resource_text_1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            style="@style/Base.TextAppearance.AppCompat.Subhead" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/resource_text_2"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="CZ4024 Machine Learning"
+            android:textSize="@dimen/abc_text_size_body_1_material" />
+    </LinearLayout>
 
 </RelativeLayout>
