@@ -1,5 +1,8 @@
 package com.andyccs.ntucsrepo;
 
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -11,6 +14,11 @@ import java.util.List;
 
 public class ResourceListAdapter extends RecyclerView.Adapter<ResourceListAdapter.ViewHolder>{
   private ResourceModel[] resources;
+  private Context context;
+
+  public ResourceListAdapter(Context context) {
+    this.context = context;
+  }
 
   @Override
   public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -28,6 +36,13 @@ public class ResourceListAdapter extends RecyclerView.Adapter<ResourceListAdapte
   public void onBindViewHolder(ViewHolder holder, int position) {
     holder.title.setText(resources[position].getName());
     holder.subtitle.setText(resources[position].getCourse());
+    if (resources[position].getLink() != null) {
+      Drawable drawable = ContextCompat.getDrawable(context, R.drawable.ic_get_app_black_24dp);
+      holder.image.setImageDrawable(drawable);
+    } else if (resources[position].getGithub() != null) {
+      Drawable drawable = ContextCompat.getDrawable(context, R.drawable.ic_github_mark);
+      holder.image.setImageDrawable(drawable);
+    }
   }
 
   @Override

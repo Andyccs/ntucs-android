@@ -88,7 +88,7 @@ public class ResourceListFragment extends Fragment {
     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
     resourceList.setLayoutManager(linearLayoutManager);
 
-    resourceListAdapter = new ResourceListAdapter();
+    resourceListAdapter = new ResourceListAdapter(getActivity());
     resourceList.setAdapter(resourceListAdapter);
 
     resourceList.addOnItemTouchListener(
