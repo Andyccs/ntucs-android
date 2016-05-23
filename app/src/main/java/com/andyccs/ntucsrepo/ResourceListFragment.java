@@ -119,17 +119,28 @@ public class ResourceListFragment extends Fragment {
           }
         }));
 
+    checkNetworkAndReadData();
+
+    return view;
+  }
+
+  private void checkNetworkAndReadData() {
     if (!isNetworkAvailable()) {
-      Snackbar.make(
+      Snackbar snackbar = Snackbar.make(
           getActivity().findViewById(android.R.id.content),
           getString(R.string.no_internet_connection),
-          Snackbar.LENGTH_LONG).show();
+          Snackbar.LENGTH_LONG);
+      snackbar.setAction("Retry", new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          checkNetworkAndReadData();
+        }
+      });
+      snackbar.show();
     } else {
       // Read data from database
       readFromDatabase();
     }
-
-    return view;
   }
 
   private void readFromDatabase() {
