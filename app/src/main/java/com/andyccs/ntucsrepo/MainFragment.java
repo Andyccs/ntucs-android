@@ -3,12 +3,11 @@ package com.andyccs.ntucsrepo;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 public class MainFragment extends Fragment {
 
@@ -49,22 +48,31 @@ public class MainFragment extends Fragment {
     setToolbarTitle.setToolbarTitle(getString(R.string.choose_resources));
 
     View mainView = inflater.inflate(R.layout.fragment_main, container, false);
-    ListView resourceList = (ListView) mainView.findViewById(R.id.resource_type_list);
 
-    ArrayAdapter<String> resourceListAdapter = new ArrayAdapter<>(
-        getActivity(),
-        R.layout.resource_text,
-        R.id.resource_text_1,
-        ResourceType.getNames(getActivity()));
+    RecyclerView resourceList = (RecyclerView) mainView.findViewById(R.id.resource_type_list);
+
+    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+    resourceList.setLayoutManager(linearLayoutManager);
+
+    final StringArrayRecycleViewAdapter resourceListAdapter =
+        new StringArrayRecycleViewAdapter(
+            getActivity(),
+            R.layout.resource_text,
+            R.id.resource_text_1,
+            ResourceType.getNames(getActivity()));
     resourceList.setAdapter(resourceListAdapter);
-    resourceList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-      @Override
-      public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-        String resourceName = (String) adapterView.getAdapter().getItem(position);
-        onResourceSelectedListener
-            .onResourceSelected(ResourceType.getType(getActivity(), resourceName));
-      }
-    });
+
+    RecycleItemClickListener.OnItemClickListener onItemClickListener =
+        new RecycleItemClickListener.OnItemClickListener() {
+          @Override
+          public void onItemClick(View view, int position) {
+            String resourceName = resourceListAdapter.getItem(position);
+            onResourceSelectedListener
+                .onResourceSelected(ResourceType.getType(getActivity(), resourceName));
+          }
+        };
+    resourceList.addOnItemTouchListener(
+        new RecycleItemClickListener(getActivity(), onItemClickListener));
 
     return mainView;
   }

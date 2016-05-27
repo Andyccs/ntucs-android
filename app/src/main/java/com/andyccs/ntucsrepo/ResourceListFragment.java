@@ -1,5 +1,12 @@
 package com.andyccs.ntucsrepo;
 
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
+import com.google.firebase.database.ValueEventListener;
+
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -16,28 +23,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.GenericTypeIndicator;
-import com.google.firebase.database.ValueEventListener;
-
 import java.util.List;
 
 
 public class ResourceListFragment extends Fragment {
   private static final String TAG = ResourceListFragment.class.getName();
   private static final String RESOURCE_TYPE_PARAM = "resource_type";
-
-  private String resourceType;
-
-  private OnResourceSelectedListener onResourceSelectedListener;
   SetToolbarTitle setToolbarTitle;
-
+  private String resourceType;
+  private OnResourceSelectedListener onResourceSelectedListener;
   private ResourceListAdapter resourceListAdapter;
 
   private LinearLayout progressLayout;
+
+  public ResourceListFragment() {
+    // Required empty public constructor
+  }
 
   /**
    * Use this factory method to create a new instance of
@@ -52,10 +53,6 @@ public class ResourceListFragment extends Fragment {
     args.putString(RESOURCE_TYPE_PARAM, resourceType);
     fragment.setArguments(args);
     return fragment;
-  }
-
-  public ResourceListFragment() {
-    // Required empty public constructor
   }
 
   @Override
@@ -91,9 +88,8 @@ public class ResourceListFragment extends Fragment {
     resourceListAdapter = new ResourceListAdapter(getActivity());
     resourceList.setAdapter(resourceListAdapter);
 
-    resourceList.addOnItemTouchListener(
-        new RecycleItemClickListener(
-            getActivity(), new RecycleItemClickListener.OnItemClickListener() {
+    RecycleItemClickListener.OnItemClickListener onItemClickListener =
+        new RecycleItemClickListener.OnItemClickListener() {
           @Override
           public void onItemClick(View view, int position) {
             ResourceModel selectedResouce = resourceListAdapter.getItem(position);
@@ -117,7 +113,9 @@ public class ResourceListFragment extends Fragment {
                 new Intent(Intent.ACTION_VIEW, Uri.parse(link));
             startActivity(browserIntent);
           }
-        }));
+        };
+    resourceList.addOnItemTouchListener(
+        new RecycleItemClickListener(getActivity(), onItemClickListener));
 
     checkNetworkAndReadData();
 
@@ -132,7 +130,7 @@ public class ResourceListFragment extends Fragment {
           Snackbar.LENGTH_LONG);
       snackbar.setAction("Retry", new View.OnClickListener() {
         @Override
-        public void onClick(View v) {
+        public void onClick(View view) {
           checkNetworkAndReadData();
         }
       });
@@ -198,14 +196,14 @@ public class ResourceListFragment extends Fragment {
     onResourceSelectedListener = null;
   }
 
-  public interface OnResourceSelectedListener {
-    void onResourceSelected(ResourceModel resourceModel);
-  }
-
   private boolean isNetworkAvailable() {
     ConnectivityManager connectivityManager
         = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
     NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
     return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+  }
+
+  public interface OnResourceSelectedListener {
+    void onResourceSelected(ResourceModel resourceModel);
   }
 }

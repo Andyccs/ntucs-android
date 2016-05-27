@@ -3,9 +3,7 @@
     <color name="colorPrimary">@color/blue500</color>
     <color name="colorPrimaryDark">@color/blue700</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="listDivider">#BBBBBB</color>
 
     <color name="blue500">#2196F3</color>
     <color name="blue700">#1976D2</color>
-    <color name="blue900">#0D47A1</color>
 </resources>

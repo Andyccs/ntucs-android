@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class ResourceListAdapter extends RecyclerView.Adapter<ResourceListAdapter.ViewHolder>{
+public class ResourceListAdapter extends RecyclerView.Adapter<ResourceListAdapter.ViewHolder> {
   private ResourceModel[] resources;
   private Context context;
 
@@ -64,6 +64,7 @@ public class ResourceListAdapter extends RecyclerView.Adapter<ResourceListAdapte
     TextView title;
     TextView subtitle;
     ImageView image;
+
     public ViewHolder(RelativeLayout view, TextView title, TextView subtitle, ImageView image) {
       super(view);
       this.view = view;
