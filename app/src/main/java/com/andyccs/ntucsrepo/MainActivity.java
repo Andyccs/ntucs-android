@@ -13,18 +13,23 @@ public class MainActivity extends AppCompatActivity implements
     ResourceListFragment.OnResourceSelectedListener,
     SetToolbarTitle {
 
-  private Toolbar toolbar;
   private CollapsingToolbarLayout collapsingToolbarLayout;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    toolbar = (Toolbar) findViewById(R.id.toolbar);
+    Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
     collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
 
+    // If we recreating this activity, then we don't create MainFragment again.
+    if (savedInstanceState != null) {
+      return;
+    }
+
+    // If we are using layout in portrait mode, then fragment container is not null
     if (findViewById(R.id.fragment_container) != null) {
       MainFragment mainFragment = new MainFragment();
       getSupportFragmentManager().beginTransaction()

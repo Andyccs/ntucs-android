@@ -12,8 +12,6 @@ import android.widget.ListView;
 
 public class MainFragment extends Fragment {
 
-  private ListView resourceList;
-
   OnResourceTypeSelectedListener onResourceSelectedListener;
   SetToolbarTitle setToolbarTitle;
 
@@ -51,7 +49,7 @@ public class MainFragment extends Fragment {
     setToolbarTitle.setToolbarTitle(getString(R.string.choose_resources));
 
     View mainView = inflater.inflate(R.layout.fragment_main, container, false);
-    resourceList = (ListView) mainView.findViewById(R.id.resource_type_list);
+    ListView resourceList = (ListView) mainView.findViewById(R.id.resource_type_list);
 
     ArrayAdapter<String> resourceListAdapter = new ArrayAdapter<>(
         getActivity(),
