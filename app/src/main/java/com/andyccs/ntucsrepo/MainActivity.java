@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements
     if (findViewById(R.id.fragment_container) != null) {
       ResourceListFragment resourceListFragment = ResourceListFragment.newInstance(resourceType);
       FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+      transaction.setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit);
       transaction.replace(R.id.fragment_container, resourceListFragment);
       transaction.addToBackStack(null);
       transaction.commit();
