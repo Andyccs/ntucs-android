@@ -26,21 +26,32 @@ public class MainActivity extends AppCompatActivity implements
     Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
-    shouldDisplayHomeUp();
-
     collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
+
+    shouldDisplayHomeUp();
 
     // If we recreating this activity, then we don't create MainFragment again.
     if (savedInstanceState != null) {
       return;
     }
 
-    // If we are using layout in portrait mode, then fragment container is not null
-    if (findViewById(R.id.fragment_container) != null) {
-      MainFragment mainFragment = new MainFragment();
-      getSupportFragmentManager().beginTransaction()
-          .add(R.id.fragment_container, mainFragment).commit();
+    int fragmentContainerId = -1;
+    if (isNormalLayout()) {
+      fragmentContainerId = R.id.fragment_container;
+    } else if (isLargeLayout()){
+      fragmentContainerId = R.id.main_fragment_large;
     }
+    MainFragment mainFragment = new MainFragment();
+    getSupportFragmentManager().beginTransaction().add(fragmentContainerId, mainFragment).commit();
+  }
+
+  private boolean isLargeLayout() {
+    return findViewById(R.id.main_fragment_large) != null &&
+        findViewById(R.id.resource_list_fragment_large) != null;
+  }
+
+  private boolean isNormalLayout() {
+    return findViewById(R.id.fragment_container) != null;
   }
 
   @Override
@@ -67,14 +78,22 @@ public class MainActivity extends AppCompatActivity implements
 
   @Override
   public void onResourceSelected(String resourceType) {
-    if (findViewById(R.id.fragment_container) != null) {
-      ResourceListFragment resourceListFragment = ResourceListFragment.newInstance(resourceType);
-      FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-      transaction.setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit);
-      transaction.replace(R.id.fragment_container, resourceListFragment);
-      transaction.addToBackStack(null);
-      transaction.commit();
+    int resourceTypeFragmentContainerId = -1;
+    boolean addToBackStack = true;
+    if (isNormalLayout()) {
+      resourceTypeFragmentContainerId = R.id.fragment_container;
+    } else if (isLargeLayout()) {
+      resourceTypeFragmentContainerId = R.id.resource_list_fragment_large;
+      addToBackStack = false;
     }
+    ResourceListFragment resourceListFragment = ResourceListFragment.newInstance(resourceType);
+    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+    transaction.setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit);
+    transaction.replace(resourceTypeFragmentContainerId, resourceListFragment);
+    if (addToBackStack) {
+      transaction.addToBackStack(null);
+    }
+    transaction.commit();
   }
 
   @Override

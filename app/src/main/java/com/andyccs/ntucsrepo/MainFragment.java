@@ -40,6 +40,7 @@ public class MainFragment extends Fragment {
   public void onDetach() {
     super.onDetach();
     onResourceSelectedListener = null;
+    setToolbarTitle = null;
   }
 
   @Override
