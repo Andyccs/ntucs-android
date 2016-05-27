@@ -11,6 +11,7 @@
     <string name="resource_type_fyps">Final Year Projects</string>
     <string name="resource_type_pyps">PYP Solutions</string>
     <string name="resource_type_summaries">Summaries and Notes</string>
+    <string name="view_resources_content_description">View resources</string>
 
     <!-- Info -->
     <string name="getting_your_resources">Getting your resources</string>

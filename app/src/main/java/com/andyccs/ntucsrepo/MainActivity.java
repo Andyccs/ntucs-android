@@ -2,6 +2,7 @@ package com.andyccs.ntucsrepo;
 
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -11,16 +12,21 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity implements
     MainFragment.OnResourceTypeSelectedListener,
     ResourceListFragment.OnResourceSelectedListener,
-    SetToolbarTitle {
+    SetToolbarTitle,
+    FragmentManager.OnBackStackChangedListener {
 
   private CollapsingToolbarLayout collapsingToolbarLayout;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    getSupportFragmentManager().addOnBackStackChangedListener(this);
+
     setContentView(R.layout.activity_main);
     Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
+
+    shouldDisplayHomeUp();
 
     collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
 
@@ -79,5 +85,22 @@ public class MainActivity extends AppCompatActivity implements
   @Override
   public void setToolbarTitle(String title) {
     collapsingToolbarLayout.setTitle(title);
+  }
+
+  @Override
+  public void onBackStackChanged() {
+    shouldDisplayHomeUp();
+  }
+
+  public void shouldDisplayHomeUp(){
+    //Enable Up button only  if there are entries in the back stack
+    boolean canback = getSupportFragmentManager().getBackStackEntryCount() > 0;
+    getSupportActionBar().setDisplayHomeAsUpEnabled(canback);
+  }
+
+  @Override
+  public boolean onSupportNavigateUp() {
+    getSupportFragmentManager().popBackStack();
+    return true;
   }
 }

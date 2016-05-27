@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -9,6 +11,16 @@
     android:clickable="true"
     android:background="?android:attr/selectableItemBackground">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/nested_list_view_indicator"
+        android:background="@drawable/ic_arrow_right_indicator"
+        tools:ignore="ContentDescription"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,14 +28,10 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_toStartOf="@id/nested_list_view_indicator"
+        android:layout_toLeftOf="@id/nested_list_view_indicator"
         style="@style/Base.TextAppearance.AppCompat.Subhead" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:background="@drawable/ic_arrow_right_indicator"/>
 
 </RelativeLayout>

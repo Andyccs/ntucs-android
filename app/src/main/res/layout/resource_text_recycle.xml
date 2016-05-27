@@ -1,8 +1,12 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="72dp"
     android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="0dp"
+    android:paddingStart="@dimen/activity_horizontal_margin"
+    android:paddingEnd="0dp"
     android:focusable="true"
     android:clickable="true"
     android:background="?android:attr/selectableItemBackground">
@@ -14,7 +18,8 @@
         android:layout_margin="@dimen/activity_horizontal_margin"
         android:id="@+id/resource_image_1"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"/>
+        android:layout_alignParentEnd="true"
+        android:contentDescription="@string/view_resources_content_description"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -40,7 +45,7 @@
             android:id="@+id/resource_text_2"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textSize="@dimen/abc_text_size_body_1_material" />
+            android:textSize="14sp" />
     </LinearLayout>
 
 </RelativeLayout>
