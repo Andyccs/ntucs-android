@@ -1,4 +1,4 @@
-package com.andyccs.ntucsrepo;
+package com.andyccs.ntucsrepo.models;
 
 public class ResourceModel {
   private int id;

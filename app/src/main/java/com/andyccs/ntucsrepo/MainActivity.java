@@ -9,6 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.andyccs.ntucsrepo.models.ResourceModel;
+
 public class MainActivity extends AppCompatActivity implements
     MainFragment.OnResourceTypeSelectedListener,
     ResourceListFragment.OnResourceSelectedListener,

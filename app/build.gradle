@@ -2,9 +2,16 @@ apply plugin: 'com.android.application'
 apply plugin: 'checkstyle'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'ntucsrepo'
+            keyPassword System.getenv("KEYPWD")
+            storeFile file('ntucsrepo.jks')
+            storePassword System.getenv("KSTOREPWD")
+        }
+    }
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
-
     defaultConfig {
         applicationId "com.andyccs.ntucsrepo"
         minSdkVersion 16
@@ -15,7 +22,8 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            signingConfig signingConfigs.config
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
