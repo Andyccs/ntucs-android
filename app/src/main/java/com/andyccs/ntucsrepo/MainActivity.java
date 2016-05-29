@@ -10,11 +10,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.andyccs.ntucsrepo.models.ResourceModel;
+import com.andyccs.ntucsrepo.shares.CommonActivityMethods;
 
 public class MainActivity extends AppCompatActivity implements
     MainFragment.OnResourceTypeSelectedListener,
     ResourceListFragment.OnResourceSelectedListener,
-    SetToolbarTitle,
+    CommonActivityMethods,
     FragmentManager.OnBackStackChangedListener {
 
   private CollapsingToolbarLayout collapsingToolbarLayout;

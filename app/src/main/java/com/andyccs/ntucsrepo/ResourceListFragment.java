@@ -24,6 +24,9 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.andyccs.ntucsrepo.models.ResourceModel;
+import com.andyccs.ntucsrepo.shares.CommonActivityMethods;
+import com.andyccs.ntucsrepo.shares.RecycleItemClickListener;
+import com.andyccs.ntucsrepo.shares.ResourceType;
 
 import java.util.List;
 
@@ -31,7 +34,7 @@ import java.util.List;
 public class ResourceListFragment extends Fragment {
   private static final String TAG = ResourceListFragment.class.getName();
   private static final String RESOURCE_TYPE_PARAM = "resource_type";
-  SetToolbarTitle setToolbarTitle;
+  CommonActivityMethods commonActivityMethods;
   private String resourceType;
   private OnResourceSelectedListener onResourceSelectedListener;
   private ResourceListAdapter resourceListAdapter;
@@ -75,7 +78,7 @@ public class ResourceListFragment extends Fragment {
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
-    setToolbarTitle.setToolbarTitle(ResourceType.getName(getActivity(), resourceType));
+    commonActivityMethods.setToolbarTitle(ResourceType.getName(getActivity(), resourceType));
 
     View view = inflater.inflate(R.layout.fragment_resource_list, container, false);
 
@@ -178,8 +181,8 @@ public class ResourceListFragment extends Fragment {
           + " must implement OnResourceSelectedListener");
     }
 
-    if (context instanceof SetToolbarTitle) {
-      setToolbarTitle = (SetToolbarTitle) context;
+    if (context instanceof CommonActivityMethods) {
+      commonActivityMethods = (CommonActivityMethods) context;
     } else {
       throw new RuntimeException(context.toString()
           + " must implement SetToolbarTitle");

@@ -9,10 +9,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.andyccs.ntucsrepo.shares.CommonActivityMethods;
+import com.andyccs.ntucsrepo.shares.RecycleItemClickListener;
+import com.andyccs.ntucsrepo.shares.ResourceType;
+import com.andyccs.ntucsrepo.shares.StringArrayRecycleViewAdapter;
+
 public class MainFragment extends Fragment {
 
   OnResourceTypeSelectedListener onResourceSelectedListener;
-  SetToolbarTitle setToolbarTitle;
+  CommonActivityMethods commonActivityMethods;
 
   public MainFragment() {
     // Required empty public constructor
@@ -28,8 +33,8 @@ public class MainFragment extends Fragment {
           + " must implement OnResourceTypeSelectedListener");
     }
 
-    if (context instanceof SetToolbarTitle) {
-      setToolbarTitle = (SetToolbarTitle) context;
+    if (context instanceof CommonActivityMethods) {
+      commonActivityMethods = (CommonActivityMethods) context;
     } else {
       throw new RuntimeException(context.toString()
           + " must implement SetToolbarTitle");
@@ -40,13 +45,13 @@ public class MainFragment extends Fragment {
   public void onDetach() {
     super.onDetach();
     onResourceSelectedListener = null;
-    setToolbarTitle = null;
+    commonActivityMethods = null;
   }
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
-    setToolbarTitle.setToolbarTitle(getString(R.string.choose_resources));
+    commonActivityMethods.setToolbarTitle(getString(R.string.choose_resources));
 
     View mainView = inflater.inflate(R.layout.fragment_main, container, false);
 

@@ -1,4 +1,4 @@
-package com.andyccs.ntucsrepo;
+package com.andyccs.ntucsrepo.shares;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -24,7 +24,8 @@ public class RecycleItemClickListener implements RecyclerView.OnItemTouchListene
     });
   }
 
-  @Override public boolean onInterceptTouchEvent(RecyclerView view, MotionEvent motionEvent) {
+  @Override
+  public boolean onInterceptTouchEvent(RecyclerView view, MotionEvent motionEvent) {
     View childView = view.findChildViewUnder(motionEvent.getX(), motionEvent.getY());
     if (childView != null && listener != null && gestureDetector.onTouchEvent(motionEvent)) {
       listener.onItemClick(childView, view.getChildPosition(childView));
@@ -33,7 +34,8 @@ public class RecycleItemClickListener implements RecyclerView.OnItemTouchListene
     return false;
   }
 
-  @Override public void onTouchEvent(RecyclerView view, MotionEvent motionEvent) {
+  @Override
+  public void onTouchEvent(RecyclerView view, MotionEvent motionEvent) {
 
   }
 
