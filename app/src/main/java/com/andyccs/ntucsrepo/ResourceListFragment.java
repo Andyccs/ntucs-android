@@ -130,17 +130,10 @@ public class ResourceListFragment extends Fragment {
           getActivity().findViewById(android.R.id.content),
           getString(R.string.no_internet_connection),
           Snackbar.LENGTH_LONG);
-      snackbar.setAction("Retry", new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-          checkNetworkAndReadData();
-        }
-      });
       snackbar.show();
-    } else {
-      // Read data from database
-      readFromDatabase();
     }
+
+    readFromDatabase();
   }
 
   private void readFromDatabase() {
@@ -156,6 +149,7 @@ public class ResourceListFragment extends Fragment {
             new GenericTypeIndicator<List<ResourceModel>>() {
             };
         List<ResourceModel> resourceModels = dataSnapshot.getValue(type);
+
         resourceListAdapter.addAll(resourceModels);
         resourceListAdapter.notifyDataSetChanged();
       }
@@ -171,7 +165,7 @@ public class ResourceListFragment extends Fragment {
             Snackbar.LENGTH_LONG).show();
       }
     };
-    databaseReference.addValueEventListener(valueEventListener);
+    databaseReference.addListenerForSingleValueEvent(valueEventListener);
   }
 
   @Override
