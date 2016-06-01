@@ -1,5 +1,6 @@
 package com.andyccs.ntucsrepo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.FragmentManager;
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements
     // Inflate the menu; this adds items to the action bar if it is present.
 
     // TODO: inflate a menu with about us and feedback options
-    // getMenuInflater().inflate(R.menu.menu_main, menu);
+     getMenuInflater().inflate(R.menu.menu_main, menu);
     return true;
   }
 
@@ -74,7 +75,9 @@ public class MainActivity extends AppCompatActivity implements
     int id = item.getItemId();
 
     //noinspection SimplifiableIfStatement
-    if (id == R.id.action_settings) {
+    if (id == R.id.action_about_us) {
+      Intent intent = new Intent(this, AboutUsActivity.class);
+      startActivity(intent);
       return true;
     }
 

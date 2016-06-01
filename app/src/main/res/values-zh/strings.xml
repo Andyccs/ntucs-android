@@ -13,4 +13,9 @@
     <string name="try_again">诶呀！我们无法完成这个动作，请稍后再试。</string>
     <string name="main_activity_title">南大CS资源库</string>
     <string name="view_resources_content_description">查看资源</string>
+    <string name="title_activity_about_us">关于我们</string>
+    <string name="open_source_licenses">开源授权条款</string>
+    <string name="view_github_repository">查看GitHub库</string>
+    <string name="about_us_text">我是Andyccs，也是这个安卓程序的开发者。你可以查看这个程序的GitHub库。
+        所有在这个程序里的资源都是我亲自准备的，并由许多开源贡献者检阅。</string>
 </resources>
