@@ -1,5 +1,6 @@
 package com.andyccs.ntucsrepo;
 
+import com.google.firebase.crash.FirebaseCrash;
 import com.google.firebase.database.FirebaseDatabase;
 
 import android.content.Intent;

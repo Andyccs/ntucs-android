@@ -1,8 +1,9 @@
 package com.andyccs.ntucsrepo;
 
+import com.google.firebase.crash.FirebaseCrash;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
@@ -17,7 +18,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,14 +32,16 @@ import java.util.List;
 
 
 public class ResourceListFragment extends Fragment {
-  private static final String TAG = ResourceListFragment.class.getName();
   private static final String RESOURCE_TYPE_PARAM = "resource_type";
-  CommonActivityMethods commonActivityMethods;
-  private String resourceType;
+
   private OnResourceSelectedListener onResourceSelectedListener;
+  private CommonActivityMethods commonActivityMethods;
+
   private ResourceListAdapter resourceListAdapter;
 
   private LinearLayout progressLayout;
+
+  private String resourceType;
 
   public ResourceListFragment() {
     // Required empty public constructor
@@ -64,14 +66,18 @@ public class ResourceListFragment extends Fragment {
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     if (getArguments() == null) {
-      throw new NullPointerException(
+      RuntimeException exception = new NullPointerException(
           "You must provide resource type param to ResourceListFragment");
+      FirebaseCrash.report(exception);
+      throw exception;
     }
 
     resourceType = getArguments().getString(RESOURCE_TYPE_PARAM);
     if (resourceType == null) {
-      throw new NullPointerException(
+      RuntimeException exception = new NullPointerException(
           "You must provide resource type param to ResourceListFragment");
+      FirebaseCrash.report(exception);
+      throw exception;
     }
   }
 
@@ -108,9 +114,7 @@ public class ResourceListFragment extends Fragment {
             }
 
             if (link == null) {
-              Snackbar.make(
-                  view,
-                  getString(R.string.no_resource_found),
+              Snackbar.make(view, getString(R.string.no_resource_found),
                   Snackbar.LENGTH_SHORT).show();
               return;
             }
@@ -160,7 +164,7 @@ public class ResourceListFragment extends Fragment {
       @Override
       public void onCancelled(DatabaseError databaseError) {
         // Failed to read value
-        Log.w(TAG, "Failed to read value.", databaseError.toException());
+        FirebaseCrash.report(databaseError.toException());
         progressLayout.setVisibility(View.GONE);
         Snackbar.make(
             getActivity().findViewById(android.R.id.content),
@@ -177,15 +181,19 @@ public class ResourceListFragment extends Fragment {
     if (context instanceof OnResourceSelectedListener) {
       onResourceSelectedListener = (OnResourceSelectedListener) context;
     } else {
-      throw new RuntimeException(context.toString()
+      RuntimeException exception = new RuntimeException(context.toString()
           + " must implement OnResourceSelectedListener");
+      FirebaseCrash.report(exception);
+      throw exception;
     }
 
     if (context instanceof CommonActivityMethods) {
       commonActivityMethods = (CommonActivityMethods) context;
     } else {
-      throw new RuntimeException(context.toString()
+      RuntimeException exception = new RuntimeException(context.toString()
           + " must implement SetToolbarTitle");
+      FirebaseCrash.report(exception);
+      throw exception;
     }
   }
 

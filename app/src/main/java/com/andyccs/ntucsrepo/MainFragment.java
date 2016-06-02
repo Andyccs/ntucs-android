@@ -1,5 +1,7 @@
 package com.andyccs.ntucsrepo;
 
+import com.google.firebase.crash.FirebaseCrash;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -29,15 +31,19 @@ public class MainFragment extends Fragment {
     if (context instanceof OnResourceTypeSelectedListener) {
       onResourceSelectedListener = (OnResourceTypeSelectedListener) context;
     } else {
-      throw new RuntimeException(context.toString()
+      RuntimeException exception =  new RuntimeException(context.toString()
           + " must implement OnResourceTypeSelectedListener");
+      FirebaseCrash.report(exception);
+      throw exception;
     }
 
     if (context instanceof CommonActivityMethods) {
       commonActivityMethods = (CommonActivityMethods) context;
     } else {
-      throw new RuntimeException(context.toString()
+      RuntimeException exception = new RuntimeException(context.toString()
           + " must implement SetToolbarTitle");
+      FirebaseCrash.report(exception);
+      throw exception;
     }
   }
 
